@@ -2,3 +2,4 @@ rootProject.name = 'mejor-cocina'
 
 include 'mejor-cocina-application'
 include 'mejor-cocina-data'
+include 'mejor-cocina-frontend'
