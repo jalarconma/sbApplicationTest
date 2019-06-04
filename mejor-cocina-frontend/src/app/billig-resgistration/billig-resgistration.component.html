@@ -1,2 +1,60 @@
-<h3>Registrar factura</h3>
-<select ></select>
+<div class="row p-3">
+    <div class="col-lg">
+        <form #billingForm="ngForm">
+            <div class="form-group">
+                <label for="billingClient">Cliente</label>
+                <select [(ngModel)]="billing.client" class="form-control" id="billingClient" name="billingClient"
+                    required #billingClient="ngModel">
+                    <option *ngFor="let client of clients" [value]="client.id">
+                        {{client.name}} {{client.secondLastName}} {{client.id}}
+                    </option>
+                </select>
+                <div [hidden]="billingClient.valid" class="alert alert-danger">
+                    Cliente es obligatorio
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="billingWaiter">Camarero</label>
+                <select [(ngModel)]="billing.waiter" #billingWaiter="ngModel" class="form-control" id="billingWaiter"
+                    name="billingWaiter" required>
+                    <option *ngFor="let waiter of waiters" [value]="waiter.id">
+                        {{waiter.name}} {{waiter.lastName}} {{waiter.id}}
+                    </option>
+                </select>
+                <div [hidden]="billingWaiter.valid" class="alert alert-danger">
+                    Cliente es obligatorio
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="billingTable">Mesa</label>
+                <select [(ngModel)]="billing.table" #billingTable="ngModel" class="form-control" id="billingTable"
+                    name="billingTable" required>
+                    <option *ngFor="let table of tables" [value]="table.id">
+                        {{table.location}} {{table.id}}
+                    </option>
+                </select>
+                <div [hidden]="billingTable.valid" class="alert alert-danger">
+                    Mesa es obligatoria
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="billingValue">Valor de la factura</label>
+                <input #billingValue="ngModel" type="number" class="form-control" id="billingValue" required [(ngModel)]="billing.value"
+                    name="billingValue">
+                <div [hidden]="billingValue.valid" class="alert alert-danger">
+                    El valor es obligatorio
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="billingDate">Fecha de la factura</label>
+                <input [(ngModel)]="billing.date" type="text" id="billingDate" name="billingDate"
+                    placeholder="Fecha factura" class="form-control" #billingDate="ngModel" bsDatepicker required>
+                <div [hidden]="billingDate.valid" class="alert alert-danger">
+                    Fecha es obligatoria
+                </div>
+
+            </div>
+            <button [disabled]="!billingForm.form.valid" type="submit" class="btn btn-success">Crear</button>
+        </form>
+    </div>
+</div>

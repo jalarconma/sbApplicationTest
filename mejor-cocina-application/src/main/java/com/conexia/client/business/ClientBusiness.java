@@ -1,5 +1,6 @@
 package com.conexia.client.business;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class ClientBusiness {
 	public Integer create(ClientEntity dto) {
 		ClientEntity createdClient = clientDao.save(dto);
 		return createdClient.getId();
+	}
+
+	public List<ClientEntity> findAll() {
+		return clientDao.findAll();
 	}
 
 }
