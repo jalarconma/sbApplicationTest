@@ -32,8 +32,8 @@ public class ClientRest {
         return clientBusiness.findAll();
     }
     
-    @PostMapping(name = "client")
-    public Integer addAnswer(@Valid @RequestBody ClientEntity dto) {
+    @PostMapping("/client")
+    public Integer create(@Valid @RequestBody ClientEntity dto) {
     	return clientBusiness.create(dto);
     }
 

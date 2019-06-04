@@ -13,6 +13,8 @@ export class BilligResgistrationComponent implements OnInit {
     tables = [];
     billing = {};
 
+    loading = false;
+
     constructor(private clientApi: ClientApiService) { }
 
     ngOnInit() {
@@ -23,6 +25,15 @@ export class BilligResgistrationComponent implements OnInit {
         this.clientApi.findAll().subscribe((data: []) => {
             this.clients = data;
         });
+    }
+
+    onSubmit(): void {
+        this.loading = true;
+        // this.clientApi.createClient().subscribe((data: number) => {
+        //     this.loading = false;
+        //     this.billing = {};
+        //     //show alert successful
+        // });
     }
 
 }

@@ -1,6 +1,6 @@
 <div class="row p-3">
     <div class="col-lg">
-        <form #billingForm="ngForm">
+        <form (ngSubmit)="onSubmit()" #billingForm="ngForm">
             <div class="form-group">
                 <label for="billingClient">Cliente</label>
                 <select [(ngModel)]="billing.client" class="form-control" id="billingClient" name="billingClient"
@@ -54,7 +54,7 @@
                 </div>
 
             </div>
-            <button [disabled]="!billingForm.form.valid" type="submit" class="btn btn-success">Crear</button>
+            <button [disabled]="!billingForm.form.valid || loading" type="submit" class="btn btn-success">Crear</button>
         </form>
     </div>
 </div>
