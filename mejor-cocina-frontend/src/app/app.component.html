@@ -1,11 +1,31 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="text-align:center">
-  <h1>
-    Bienvenido a {{ title }}!
-  </h1>
+    <h1>
+        Bienvenido a {{ title }}!
+    </h1>
 </div>
-<nav>
-    <a [routerLink]="['/billing-registration']" routerLinkActive="active">Registrar factura</a>
-</nav>
-
+<div>
+    <tabset>
+        <tab>
+            <ng-template tabHeading>
+                <a class="routing_link" [routerLink]="['/billing-registration']">Registrar</a>
+            </ng-template>
+        </tab>
+        <tab>
+            <ng-template tabHeading>
+                <a class="routing_link" [routerLink]="['/']">Crear Cliente</a>
+            </ng-template>
+        </tab>
+        <tab>
+            <ng-template tabHeading>
+                <a class="routing_link" [routerLink]="['/']">Crear Camarero</a>
+            </ng-template>
+        </tab>
+        <tab>
+            <ng-template tabHeading>
+                <a class="routing_link" [routerLink]="['/']">Crear Mesa</a>
+            </ng-template>
+        </tab>
+    </tabset>
+</div>
 <router-outlet></router-outlet>
