@@ -14,7 +14,7 @@ public class ClientEntity extends BaseEntity {
 
 	@Id
 	@GeneratedValue(generator = "client_generator")
-	@SequenceGenerator(name = "client_generator", sequenceName = "client_sequence", initialValue = 1000)
+	@SequenceGenerator(name = "client_generator", sequenceName = "client_sequence")
 	private Integer id;
 	
 	private String name;
