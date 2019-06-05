@@ -13,6 +13,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AlertModule } from 'ngx-bootstrap/alert';
 import { CreateWaiterComponent } from './create-waiter/create-waiter.component';
 import { ServerConfig } from './shared/serverConfig';
+import { CreateTableComponent } from './create-table/create-table.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ServerConfig } from './shared/serverConfig';
     AppComponent,
     BilligResgistrationComponent,
     CreateClientComponent,
-    CreateWaiterComponent
+    CreateWaiterComponent,
+    CreateTableComponent
   ],
   imports: [
     BrowserModule,

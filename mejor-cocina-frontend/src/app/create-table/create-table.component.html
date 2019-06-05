@@ -1,0 +1,23 @@
+<div class="row p-3">
+    <div class="col-lg">
+        <form (ngSubmit)="onSubmit()" #tableForm="ngForm">
+            <div class="form-group">
+                <label for="tableLocation">Detalle</label>
+                <input #tableLocation="ngModel" type="text" class="form-control" id="tableLocation" required
+                    [(ngModel)]="table.location" name="tableLocation">
+                <div [hidden]="tableLocation.valid" class="alert alert-danger">
+                    El campo detalle es obligatorio
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="tableMaxConsumers">Cantidad mayor de comensales</label>
+                <input #tableMaxConsumers="ngModel" type="number" class="form-control" id="tableMaxConsumers" required
+                    [(ngModel)]="table.maxConsumers" name="tableMaxConsumers">
+                <div [hidden]="tableMaxConsumers.valid" class="alert alert-danger">
+                    La cantidad mayor de comensales es obligatorio
+                </div>
+            </div>
+            <button [disabled]="!tableForm.form.valid || loading" type="submit" class="btn btn-primary float-right">Crear</button>
+        </form>
+    </div>
+</div>
