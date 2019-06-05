@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.conexia.client.business.ClientBusiness;
-import com.conexia.entities.ClientEntity;
+import com.conexia.client.dto.ClientDTO;
 
 @RestController
 @CrossOrigin
@@ -28,12 +28,12 @@ public class ClientRest {
     }
     
     @GetMapping("/client/all")
-    public List<ClientEntity> findClients() {
+    public List<ClientDTO> findClients() {
         return clientBusiness.findAll();
     }
     
     @PostMapping("/client")
-    public Integer create(@Valid @RequestBody ClientEntity dto) {
+    public Integer create(@Valid @RequestBody ClientDTO dto) {
     	return clientBusiness.create(dto);
     }
 

@@ -24,6 +24,11 @@
 			<attribute name="gradle_used_by_scope" value="main,test"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry sourcepath="C:/Users/JAAM_/.gradle/caches/modules-2/files-2.1/org.modelmapper/modelmapper/1.1.0/7be617148abb6a8996381ba92156c53d99c1c502/modelmapper-1.1.0-sources.jar" kind="lib" path="C:/Users/JAAM_/.gradle/caches/modules-2/files-2.1/org.modelmapper/modelmapper/1.1.0/98b2cbf292dad9e284124e5d4c1f97771d9333a3/modelmapper-1.1.0.jar">
+		<attributes>
+			<attribute name="gradle_used_by_scope" value="main,test"/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="lib" path="C:/Users/JAAM_/.gradle/caches/modules-2/files-2.1/org.springframework.boot/spring-boot-starter-json/2.1.5.RELEASE/cf880b4a4713b2a1aea21f929df718a0260aa29/spring-boot-starter-json-2.1.5.RELEASE.jar">
 		<attributes>
 			<attribute name="gradle_used_by_scope" value="main,test"/>
