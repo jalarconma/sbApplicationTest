@@ -7,7 +7,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "restaurant_table")
+@Table(name = "RESTAURANT_TABLE")
 public class TableEntity extends BaseEntity {
 
 	private static final long serialVersionUID = -766183555558675108L;
