@@ -10,6 +10,7 @@ import { BilligResgistrationComponent } from './billig-resgistration/billig-resg
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CreateClientComponent } from './create-client/create-client.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { AlertModule } from 'ngx-bootstrap/alert';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     HttpClientModule,
     FormsModule,
     TabsModule.forRoot(),
-    BsDatepickerModule.forRoot()
+    BsDatepickerModule.forRoot(),
+    AlertModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

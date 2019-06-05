@@ -19,7 +19,7 @@ public class ClientEntity extends BaseEntity {
 	
 	private String name;
 	
-	private String firstlastName;
+	private String firstLastName;
 	
 	private String secondLastName;
 	
@@ -41,12 +41,12 @@ public class ClientEntity extends BaseEntity {
 		this.name = name;
 	}
 
-	public String getFirstlastName() {
-		return firstlastName;
+	public String getFirstLastName() {
+		return firstLastName;
 	}
 
-	public void setFirstlastName(String firstlastName) {
-		this.firstlastName = firstlastName;
+	public void setFirstLastName(String firstLastName) {
+		this.firstLastName = firstLastName;
 	}
 
 	public String getSecondLastName() {

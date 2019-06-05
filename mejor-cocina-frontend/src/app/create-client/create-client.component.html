@@ -1,3 +1,39 @@
-<p>
-  create-client works!
-</p>
+<div class="row p-3">
+    <div class="col-lg">
+        <form (ngSubmit)="onSubmit()" #clientForm="ngForm">
+            <div class="form-group">
+                <label for="clientName">Nombre</label>
+                <input #clientName="ngModel" type="text" class="form-control" id="clientName" required
+                    [(ngModel)]="client.name" name="clientName">
+                <div [hidden]="clientName.valid" class="alert alert-danger">
+                    El nombre es obligatorio
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="clientFirstLastName">Primer Apellido</label>
+                <input #clientFirstLastName="ngModel" type="text" class="form-control" id="clientFirstLastName" required
+                    [(ngModel)]="client.firstLastName" name="clientFirstLastName">
+                <div [hidden]="clientFirstLastName.valid" class="alert alert-danger">
+                    El primer apellido es obligatorio
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="clientSecondLastName">Segundo Apellido</label>
+                <input #clientSecondLastName="ngModel" type="text" class="form-control" id="clientSecondLastName"
+                    [(ngModel)]="client.secondLastName" name="clientSecondLastName">
+                <div [hidden]="clientSecondLastName.valid" class="alert alert-danger">
+                    El segundo apellido es obligatorio
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="clientObservations">Observations</label>
+                <input #clientObservations="ngModel" type="text" class="form-control" id="clientObservations"
+                    [(ngModel)]="client.observations" name="clientObservations">
+                <div [hidden]="clientObservations.valid" class="alert alert-danger">
+                    El segundo apellido es obligatorio
+                </div>
+            </div>
+            <button [disabled]="!clientForm.form.valid || loading" type="submit" class="btn btn-primary float-right">Crear</button>
+        </form>
+    </div>
+</div>
