@@ -1,0 +1,31 @@
+<div class="row p-3">
+    <div class="col-lg">
+        <form (ngSubmit)="onSubmit()" #waiterForm="ngForm">
+            <div class="form-group">
+                <label for="waiterName">Nombre</label>
+                <input #waiterName="ngModel" type="text" class="form-control" id="waiterName" required
+                    [(ngModel)]="waiter.name" name="waiterName">
+                <div [hidden]="waiterName.valid" class="alert alert-danger">
+                    El nombre es obligatorio
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="waiterFirstLastName">Primer Apellido</label>
+                <input #waiterFirstLastName="ngModel" type="text" class="form-control" id="waiterFirstLastName" required
+                    [(ngModel)]="waiter.firstLastName" name="waiterFirstLastName">
+                <div [hidden]="waiterFirstLastName.valid" class="alert alert-danger">
+                    El primer apellido es obligatorio
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="waiterSecondLastName">Segundo Apellido</label>
+                <input #waiterSecondLastName="ngModel" type="text" class="form-control" id="waiterSecondLastName"
+                    [(ngModel)]="waiter.secondLastName" name="waiterSecondLastName">
+                <div [hidden]="waiterSecondLastName.valid" class="alert alert-danger">
+                    El segundo apellido es obligatorio
+                </div>
+            </div>
+            <button [disabled]="!waiterForm.form.valid || loading" type="submit" class="btn btn-primary float-right">Crear</button>
+        </form>
+    </div>
+</div>

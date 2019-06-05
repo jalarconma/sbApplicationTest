@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule }   from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,13 +11,16 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { CreateClientComponent } from './create-client/create-client.component';
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { AlertModule } from 'ngx-bootstrap/alert';
+import { CreateWaiterComponent } from './create-waiter/create-waiter.component';
+import { ServerConfig } from './shared/serverConfig';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     BilligResgistrationComponent,
-    CreateClientComponent
+    CreateClientComponent,
+    CreateWaiterComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,9 @@ import { AlertModule } from 'ngx-bootstrap/alert';
     BsDatepickerModule.forRoot(),
     AlertModule.forRoot()
   ],
-  providers: [],
+  providers: [
+      ServerConfig
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

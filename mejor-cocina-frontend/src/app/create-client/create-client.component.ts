@@ -23,7 +23,6 @@ export class CreateClientComponent implements OnInit {
             this.client = {};
             window.alert("Cliente creado exitosamente");
         });
-
     }
 
 }

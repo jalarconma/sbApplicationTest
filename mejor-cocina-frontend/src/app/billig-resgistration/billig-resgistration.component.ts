@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ClientApiService } from '../shared/client-api.service';
+import { WaiterApiService } from '../shared/waiter-api.service';
 
 @Component({
     selector: 'app-billig-resgistration',
@@ -15,15 +16,22 @@ export class BilligResgistrationComponent implements OnInit {
 
     loading = false;
 
-    constructor(private clientApi: ClientApiService) { }
+    constructor(private clientApi: ClientApiService, private waiterApi: WaiterApiService) { }
 
     ngOnInit() {
         this.findClients();
+        this.findWaiters();
     }
 
     findClients(): void {
         this.clientApi.findAll().subscribe((data: []) => {
             this.clients = data;
+        });
+    }
+
+    findWaiters(): void {
+        this.waiterApi.findAll().subscribe((data: []) => {
+            this.waiters = data;
         });
     }
 
