@@ -1,7 +1,7 @@
 package com.conexia.entities;
 
 import java.io.Serializable;
-import java.time.LocalTime;
+import java.time.LocalDate;
 
 import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
@@ -28,10 +28,10 @@ public abstract class BaseEntity implements Serializable {
 
     @Column(name = "created_at", nullable = false, updatable = false)
     @CreatedDate
-    private LocalTime createdAt;
+    private LocalDate createdAt;
 
     @Column(name = "updated_at", nullable = false)
     @LastModifiedDate
-    private LocalTime updatedAt;
+    private LocalDate updatedAt;
 
 }

@@ -1,6 +1,6 @@
 package com.conexia.entities;
 
-import java.time.LocalTime;
+import java.time.LocalDate;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -36,7 +36,7 @@ public class BillingEntity extends BaseEntity {
     
     private Double value;
     
-    private LocalTime registrationDate;
+    private LocalDate registrationDate;
 
 	public Integer getId() {
 		return id;
@@ -78,12 +78,12 @@ public class BillingEntity extends BaseEntity {
 		this.value = value;
 	}
 
-	public LocalTime getRegistrationDate() {
+	public LocalDate getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(LocalTime registrationDate) {
+	public void setRegistrationDate(LocalDate registrationDate) {
 		this.registrationDate = registrationDate;
 	}
-
+	
 }

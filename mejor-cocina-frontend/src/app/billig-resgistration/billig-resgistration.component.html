@@ -6,7 +6,7 @@
                 <select [(ngModel)]="billing.client" class="form-control" id="billingClient" name="billingClient"
                     required #billingClient="ngModel">
                     <option *ngFor="let client of clients" [value]="client.id">
-                        {{client.name}} {{client.secondLastName}} {{client.id}}
+                        {{client.name}} {{client.firstLastName}} {{client.secondLastName}}
                     </option>
                 </select>
                 <div [hidden]="billingClient.valid" class="alert alert-danger">
@@ -18,7 +18,7 @@
                 <select [(ngModel)]="billing.waiter" #billingWaiter="ngModel" class="form-control" id="billingWaiter"
                     name="billingWaiter" required>
                     <option *ngFor="let waiter of waiters" [value]="waiter.id">
-                        {{waiter.name}} {{waiter.lastName}} {{waiter.id}}
+                        {{waiter.name}} {{waiter.lastName}}
                     </option>
                 </select>
                 <div [hidden]="billingWaiter.valid" class="alert alert-danger">
@@ -47,12 +47,11 @@
             </div>
             <div class="form-group">
                 <label for="billingDate">Fecha de la factura</label>
-                <input [(ngModel)]="billing.date" type="text" id="billingDate" name="billingDate"
+                <input [(ngModel)]="billing.registrationDate" type="text" id="billingDate" name="billingDate"
                     placeholder="Fecha factura" class="form-control" #billingDate="ngModel" bsDatepicker required>
                 <div [hidden]="billingDate.valid" class="alert alert-danger">
                     Fecha es obligatoria
                 </div>
-
             </div>
             <button [disabled]="!billingForm.form.valid || loading" type="submit" class="btn btn-success">Crear</button>
         </form>

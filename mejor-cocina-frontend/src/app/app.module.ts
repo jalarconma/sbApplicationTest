@@ -14,6 +14,7 @@ import { AlertModule } from 'ngx-bootstrap/alert';
 import { CreateWaiterComponent } from './create-waiter/create-waiter.component';
 import { ServerConfig } from './shared/serverConfig';
 import { CreateTableComponent } from './create-table/create-table.component';
+import { DatePipe } from '@angular/common';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { CreateTableComponent } from './create-table/create-table.component';
     AlertModule.forRoot()
   ],
   providers: [
-      ServerConfig
+      ServerConfig,
+      DatePipe
   ],
   bootstrap: [AppComponent]
 })

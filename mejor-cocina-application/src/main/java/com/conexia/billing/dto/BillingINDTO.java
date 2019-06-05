@@ -1,8 +1,12 @@
 package com.conexia.billing.dto;
 
+import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.Date;
 
 import javax.validation.constraints.NotNull;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class BillingINDTO {
 	
@@ -19,7 +23,8 @@ public class BillingINDTO {
 	private Double value;
 	
 	@NotNull
-	private LocalTime registrationDate;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+	private LocalDate registrationDate;
 
 	public Integer getClientId() {
 		return clientId;
@@ -53,13 +58,13 @@ public class BillingINDTO {
 		this.value = value;
 	}
 
-	public LocalTime getRegistrationDate() {
+	public LocalDate getRegistrationDate() {
 		return registrationDate;
 	}
 
-	public void setRegistrationDate(LocalTime registrationDate) {
+	public void setRegistrationDate(LocalDate registrationDate) {
 		this.registrationDate = registrationDate;
 	}
-	
+
 	
 }
