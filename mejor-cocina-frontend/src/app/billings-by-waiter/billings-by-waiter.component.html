@@ -1,0 +1,39 @@
+<div class="row p-3">
+    <div class="col-lg">
+        <form class="form-inline" (ngSubmit)="onSubmit()" #dateForm="ngForm">
+            <div class="form-group mb-2">
+                <label for="year">Año</label>
+                <input type="number" maxlength="4" class="form-control" id="year" required [(ngModel)]="year"
+                    name="year">
+            </div>
+            <div class="form-group mx-sm-3 mb-2">
+                <label for="month">Mes</label>
+                <input type="number" min="1" max="12" maxlength="2" class="form-control" id="month" required
+                    [(ngModel)]="month" name="month">
+            </div>
+            <button [disabled]="!dateForm.form.valid" type="submit"
+                class="btn btn-primary mb-2 float-right">Buscar</button>
+        </form>
+    </div>
+</div>
+
+<div class="row p-3">
+    <div class="col-lg">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Valor de facturas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let waiter of billingsByWaiter">
+                    <td>{{waiter.waiterName}}</td>
+                    <td>{{waiter.waiterLastName}}</td>
+                    <td>$ {{waiter.totalBillingsValue}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

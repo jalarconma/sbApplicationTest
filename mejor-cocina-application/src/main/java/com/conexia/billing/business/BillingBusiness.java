@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -69,8 +71,19 @@ public class BillingBusiness {
 	}
 	
 	public List<BillingWaiterDTO> findByWaiterAndYearAndMonth(BillingRegistrationINDTO dto) {
-		List<BillingEntity> billings = billingDao.findByRegistrationMonthAndYear(dto.getYear(), dto.getMonth());
+		validateDate(dto);
+		Integer year = Integer.parseInt(dto.getYear());
+		Integer month = Integer.parseInt(dto.getMonth());
+		List<BillingEntity> billings = billingDao.findByRegistrationMonthAndYear(year, month);
 		return calculateBillingsByWaiter(billings);
+	}
+
+	private void validateDate(BillingRegistrationINDTO dto) {
+		
+		if (!StringUtils.isNumeric(dto.getYear())
+				&& !StringUtils.isNumeric(dto.getMonth())) {
+			throw new InputDataException("La fecha no es válida");
+		}
 	}
 
 	private List<BillingWaiterDTO> calculateBillingsByWaiter(List<BillingEntity> billings) {
@@ -84,21 +97,43 @@ public class BillingBusiness {
 	private List<BillingWaiterDTO> findWaitersWithoutBillings(
 			Map<Integer, List<BillingEntity>> billingsByWaiter) {
 		List<BillingWaiterDTO> dtos = new ArrayList<>();
-		List<WaiterEntity> waiters = waiterDao.findNotInByIds(billingsByWaiter.keySet());
+		Set<Integer> setKeys = billingsByWaiter.keySet();
+		
+		if (setKeys.isEmpty()) {
+			return addAllWaitersWithOutBillingValues();
+		}
+		
+		List<WaiterEntity> waiters = waiterDao.findNotInByIds(setKeys.stream().toArray(Integer[]::new));
 		
 		if (waiters == null) {
 			return dtos;
 		}
 		
 		for (WaiterEntity waiter : waiters) {
-			BillingWaiterDTO dto = new BillingWaiterDTO();
-			dto.setWaiterName(waiter.getName());
-			dto.setWaiterLastName(waiter.getFirstLastName());
-			dto.setTotalBillingsValue(0d);
-			dtos.add(dto);
+			dtos.add(addZeroValueBillingWaiter(waiter));
 		}
 		
 		return dtos;
+	}
+
+	private List<BillingWaiterDTO> addAllWaitersWithOutBillingValues() {
+		List<BillingWaiterDTO> dtos = new ArrayList<>();
+		List<WaiterEntity> waiters = waiterDao.findAll();
+		
+		for (WaiterEntity waiter : waiters) {
+			dtos.add(addZeroValueBillingWaiter(waiter));
+		}
+		
+		return dtos;
+	}
+
+	private BillingWaiterDTO addZeroValueBillingWaiter(WaiterEntity waiter) {
+		BillingWaiterDTO dto = new BillingWaiterDTO();
+		dto.setWaiterName(waiter.getName());
+		dto.setWaiterLastName(waiter.getFirstLastName());
+		dto.setTotalBillingsValue(0d);
+		
+		return dto;
 	}
 
 	private List<BillingWaiterDTO> plusBillingsByWaiter(Map<Integer, List<BillingEntity>> billingsByWaiter) {
@@ -132,7 +167,7 @@ public class BillingBusiness {
 			}
 			
 			orderedBillings.add(billing);
-			billingsByWaiter.replace(waiterId, orderedBillings);
+			billingsByWaiter.put(waiterId, orderedBillings);
 		}
 		
 		return billingsByWaiter;

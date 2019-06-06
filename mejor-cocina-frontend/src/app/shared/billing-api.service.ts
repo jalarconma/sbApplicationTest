@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { ServerConfig } from './serverConfig';
@@ -17,5 +17,14 @@ export class BillingApiService {
                 retry(1),
                 catchError(this.config.handleError)
             )
+    }
+
+    findByWaiter(year, month): Observable<[]> {
+        //let params = new HttpParams().set("year", year).set("month", month);
+        let url = this.config.apiURL + `/billing/by-waiter/year/${year}/month/${month}`; 
+        return this.http.get<[]>(url).pipe(
+            retry(1),
+            catchError(this.config.handleError)
+        )
     }
 }

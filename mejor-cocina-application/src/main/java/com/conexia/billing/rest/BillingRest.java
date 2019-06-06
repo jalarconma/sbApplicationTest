@@ -29,9 +29,9 @@ public class BillingRest {
     	return billingBusiness.create(dto);
     }
     
-    @GetMapping("/billing/by-waiter/year{year}/month/{month}")
-    public List<BillingWaiterDTO> findBillingsByWaiter(@PathVariable(name = "year") Integer year,
-    		@PathVariable(name = "month") Integer month) {
+    @GetMapping("/billing/by-waiter/year/{year}/month/{month}")
+    public List<BillingWaiterDTO> findBillingsByWaiter(@PathVariable(name = "year") String year,
+    		@PathVariable(name = "month") String month) {
         return billingBusiness.findByWaiterAndYearAndMonth(new BillingRegistrationINDTO(year, month));
     }
     

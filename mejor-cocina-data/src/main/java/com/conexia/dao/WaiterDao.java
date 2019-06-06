@@ -1,6 +1,5 @@
 package com.conexia.dao;
 
-import java.util.Collection;
 import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -13,7 +12,7 @@ import com.conexia.entities.WaiterEntity;
 @Repository(value = "WaiterDao")
 public interface WaiterDao extends JpaRepository<WaiterEntity, Integer> {
 	
-	@Query(value = "SELECT w FROM WaiterEntity w WHERE w.id NOT IN :ids")
-	List<WaiterEntity> findNotInByIds(@Param("ids") Collection<Integer> ids);
+	@Query(value = "SELECT w FROM WaiterEntity w WHERE w.id NOT IN (:ids)")
+	List<WaiterEntity> findNotInByIds(@Param("ids") Integer... ids);
 
 }

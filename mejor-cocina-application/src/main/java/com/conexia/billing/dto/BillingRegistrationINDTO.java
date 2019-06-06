@@ -2,28 +2,30 @@ package com.conexia.billing.dto;
 
 public class BillingRegistrationINDTO {
 	
-	private Integer year;
+	private String year;
 	
-	private Integer month;
-
-	public BillingRegistrationINDTO(Integer year, Integer month) {
+	private String month;
+	
+	public BillingRegistrationINDTO(String year, String month) {
 		this.year = year;
 		this.month = month;
 	}
 
-	public Integer getYear() {
+	public String getYear() {
 		return year;
 	}
 
-	public void setYear(Integer year) {
+	public void setYear(String year) {
 		this.year = year;
 	}
 
-	public Integer getMonth() {
+	public String getMonth() {
 		return month;
 	}
 
-	public void setMonth(Integer month) {
+	public void setMonth(String month) {
 		this.month = month;
 	}
+	
+	
 }

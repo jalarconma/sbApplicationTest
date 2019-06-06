@@ -4,6 +4,7 @@ import { BilligResgistrationComponent } from './billig-resgistration/billig-resg
 import { CreateClientComponent } from './create-client/create-client.component';
 import { CreateWaiterComponent } from './create-waiter/create-waiter.component';
 import { CreateTableComponent } from './create-table/create-table.component';
+import { BillingsByWaiterComponent } from './billings-by-waiter/billings-by-waiter.component';
 
 const routes: Routes = [
     {
@@ -21,6 +22,10 @@ const routes: Routes = [
     {
         path : 'create-table',
         component : CreateTableComponent
+    },
+    {
+        path : 'billings-waiter',
+        component : BillingsByWaiterComponent
     }
 ];
 
