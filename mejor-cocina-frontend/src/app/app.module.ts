@@ -16,6 +16,7 @@ import { ServerConfig } from './shared/serverConfig';
 import { CreateTableComponent } from './create-table/create-table.component';
 import { DatePipe } from '@angular/common';
 import { BillingsByWaiterComponent } from './billings-by-waiter/billings-by-waiter.component';
+import { BillingsByClientComponent } from './billings-by-client/billings-by-client.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { BillingsByWaiterComponent } from './billings-by-waiter/billings-by-wait
     CreateClientComponent,
     CreateWaiterComponent,
     CreateTableComponent,
-    BillingsByWaiterComponent
+    BillingsByWaiterComponent,
+    BillingsByClientComponent
   ],
   imports: [
     BrowserModule,

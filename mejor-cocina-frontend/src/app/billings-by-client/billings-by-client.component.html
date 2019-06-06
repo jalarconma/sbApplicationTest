@@ -1,0 +1,20 @@
+<div class="row p-3">
+    <div class="col-lg">
+        <table class="table">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Valor de facturas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let client of billingsByClient">
+                    <td>{{client.clientName}}</td>
+                    <td>{{client.clientLastName}}</td>
+                    <td>$ {{client.totalBillingsValue}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

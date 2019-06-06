@@ -20,8 +20,15 @@ export class BillingApiService {
     }
 
     findByWaiter(year, month): Observable<[]> {
-        //let params = new HttpParams().set("year", year).set("month", month);
-        let url = this.config.apiURL + `/billing/by-waiter/year/${year}/month/${month}`; 
+        let url = this.config.apiURL + `/billing/by-waiter/year/${year}/month/${month}`;
+        return this.http.get<[]>(url).pipe(
+            retry(1),
+            catchError(this.config.handleError)
+        )
+    }
+
+    findByClient(): Observable<[]> {
+        let url = this.config.apiURL + '/billing/by-client';
         return this.http.get<[]>(url).pipe(
             retry(1),
             catchError(this.config.handleError)

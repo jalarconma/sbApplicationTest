@@ -5,6 +5,7 @@ import { CreateClientComponent } from './create-client/create-client.component';
 import { CreateWaiterComponent } from './create-waiter/create-waiter.component';
 import { CreateTableComponent } from './create-table/create-table.component';
 import { BillingsByWaiterComponent } from './billings-by-waiter/billings-by-waiter.component';
+import { BillingsByClientComponent } from './billings-by-client/billings-by-client.component';
 
 const routes: Routes = [
     {
@@ -26,6 +27,10 @@ const routes: Routes = [
     {
         path : 'billings-waiter',
         component : BillingsByWaiterComponent
+    },
+    {
+        path : 'billings-client',
+        component : BillingsByClientComponent
     }
 ];
 
