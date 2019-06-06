@@ -14,6 +14,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import com.conexia.entities.BillingEntity;
+import com.conexia.entities.ClientEntity;
 
 public class BillingDaoCustomImpl implements BillingDaoCustom {
 	

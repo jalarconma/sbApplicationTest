@@ -11,6 +11,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.conexia.billing.dto.BillingClientDTO;
 import com.conexia.billing.dto.BillingINDTO;
 import com.conexia.billing.dto.BillingRegistrationINDTO;
 import com.conexia.billing.dto.BillingWaiterDTO;
@@ -38,6 +39,8 @@ public class BillingBusiness {
 	
 	@Autowired
 	private TableDao tableDao;
+	
+	private static final Double VIP_CLIENT_EXPENSE = 100000d;
 	
 	public Integer create(BillingINDTO dto) {
 		Optional<ClientEntity> client = clientDao.findById(dto.getClientId());
@@ -76,6 +79,39 @@ public class BillingBusiness {
 		Integer month = Integer.parseInt(dto.getMonth());
 		List<BillingEntity> billings = billingDao.findByRegistrationMonthAndYear(year, month);
 		return calculateBillingsByWaiter(billings);
+	}
+	
+	public List<BillingClientDTO> findByClientGreatherThanVIPExpense() {
+		List<ClientEntity> clients = clientDao.findAll();
+		return calculateBillingsByClient(clients);
+	}
+
+	private List<BillingClientDTO> calculateBillingsByClient(List<ClientEntity> clients) {
+		List<BillingClientDTO> dtos = new ArrayList<>();
+		
+		for (ClientEntity client : clients) {
+			Double totalBillingValues = calculatetotalBillingValues(client.getBillings());
+			
+			if (totalBillingValues.doubleValue() > VIP_CLIENT_EXPENSE) {
+				BillingClientDTO dto = new BillingClientDTO();
+				dto.setClientName(client.getName());
+				dto.setClientLastName(client.getFirstLastName());
+				dto.setTotalBillingsValue(totalBillingValues);
+				dtos.add(dto);
+			}
+		}
+		
+		return dtos;
+	}
+
+	private Double calculatetotalBillingValues(List<BillingEntity> billings) {
+		Double value = 0d;
+		
+		for (BillingEntity billing : billings) {
+			value += billing.getValue();
+		}
+		
+		return value;
 	}
 
 	private void validateDate(BillingRegistrationINDTO dto) {

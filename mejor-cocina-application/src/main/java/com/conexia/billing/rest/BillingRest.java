@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.conexia.billing.business.BillingBusiness;
+import com.conexia.billing.dto.BillingClientDTO;
 import com.conexia.billing.dto.BillingINDTO;
 import com.conexia.billing.dto.BillingRegistrationINDTO;
 import com.conexia.billing.dto.BillingWaiterDTO;
@@ -33,6 +34,11 @@ public class BillingRest {
     public List<BillingWaiterDTO> findBillingsByWaiter(@PathVariable(name = "year") String year,
     		@PathVariable(name = "month") String month) {
         return billingBusiness.findByWaiterAndYearAndMonth(new BillingRegistrationINDTO(year, month));
+    }
+    
+    @GetMapping("/billing/by-client")
+    public List<BillingClientDTO> findBillingsByClient() {
+        return billingBusiness.findByClientGreatherThanVIPExpense();
     }
     
 
